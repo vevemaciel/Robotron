@@ -1,0 +1,51 @@
+Transcrição
+Usamos a palavra "document" no console do navegador e entendemos que ela tem alguns poderes. Mas, afinal, o que é essa palavra?
+
+Sempre que o JavaScript vai agir com o navegador, ele navega em uma coisa chamada DOM. DOM é a sigla de Document Object Model, que em português significa modelo de objeto do documento. O nosso HTML é um documento e para lê-lo o navegador o transforme em um objeto. Um objeto manipulável, um objeto na estrutura do JavaScript.
+
+Se chegarmos em nosso console e digitarmos apenas document vamos entender um pouco mais.
+
+> document
+    #document
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>_</head>
+            <body>_<body>
+        </html>COPIAR CÓDIGO
+Na estrutura do document elenos retornou o html. Aqui no Chrome, ele exibe a árvores do HTML limpa para nós. O document é, portanto, o nosso arquivo de html. Porém, ele é o arquivo html com super poderes. Vamos abrir aqui o Firefox para vermos uma representação um pouco diferente do document. Com a mesma página aberta digitamos document no console.
+
+document
+    HTMLDocument file:///User/pedromarins/code/alura/robotron-200/index.htmlCOPIAR CÓDIGO
+Enquanto no Chrome ele apresenta um identificador e um document aqui ele diz que é um documento do tipo HTML. Quando abrimos ele, todos os "super poderes" que o HTML possui são apresentados e todos esses poderes que o JavaScript ao ler a página também passa a ter.
+
+Se por exemplo, digitarmos no console do Chrome document.URL ele nos retornará qual é a url que estamos usando no navegador.
+
+document.URL
+'file://Users/pedromarins/code/alura/robotron-200/index.htmlCOPIAR CÓDIGO
+Se digitarmo document.title, ele retorna o título que está dentro da tag <title>.
+
+document.title
+'Robotron 2000'COPIAR CÓDIGO
+Se digitarmo document.body ele retorna todos o body criado.
+
+document.body
+    <body>
+        <main>_</main>
+    </body>COPIAR CÓDIGO
+O mesmo acontece se digitarmo document.head, ele vai retornar tudo.
+
+document.head
+    <head>COPIAR CÓDIGO
+Agora, podemos usar o body e podemos usar o head então por que não podemos usar document.producao que nós criamos anteriormente?
+
+document.producao
+undefinedCOPIAR CÓDIGO
+O body e o head são tags padrão da nossa página, elas sempre estarão presentes, ou seja, esse métodos já existem no JavaScript e no DOM. Agora, quando queremos procurar uma classe ou um id que nós criamos, usamos os métodos próprios de busca como o document.getElementById('producao') ou o querySelector('#producao') e o resultado é o mesmo.
+
+document.getElementById('producao')
+<input type="submit" value="Teste JavaScript" class"producao" id="producao">COPIAR CÓDIGO
+querySelector('#producao')
+<input type="submit" value="Teste JavaScript" class"producao" id="producao">COPIAR CÓDIGO
+Vimos como apenas dois navegadores se comportam para que vocês entendam que duas ferramentas diferentes estão olhando e manipulando a mesma página da mesma forma e usando a mesma estrutura de JavaScript. Lógico que alguns comportamentos podem ser diferentes de alguns navegadores para outros, mas em sua a maioria é o JavaScript manipulando a páginas por meio dessa busca avançado dos elementos, dos eventos e de melhorias em nosso código.
+
+Para fazer a primeira melhoria e começarmos a manipular de fato a nossa página com JavaScript, nosso desafio será montar o nosso robô para a batalha. Vamos adicionar braço, blindagem, e núcleos. Mas isso é um desafio para a próxima aula.
