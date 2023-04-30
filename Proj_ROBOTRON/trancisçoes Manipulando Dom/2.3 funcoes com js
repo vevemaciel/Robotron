@@ -1,0 +1,99 @@
+Transcrição
+O JavaScript e toda a linguagem de programação tem a opção de armazenar dados. Gosto de explicar a função como uma forma de armazenarmos códigos que serão repetidos várias vezes. A função é usada para que esse código seja chamado mais de um vez.
+
+Vamos supor que ao carregar nossa página nós queiramos executar esse bloco de códigos.
+
+const robotron = document.querySelector("#robotron")
+
+robotron.addEventLeitener("click", dizOi)
+
+function dizOi() {
+    console.log('Oi')
+    console.log("Bem-vindo ao Robotron 2000")
+}COPIAR CÓDIGO
+Duas linhas de código, duas impressões no console. Queremos que todas as vezes que a página for carregada, a função dizOi seja executada.
+
+Para isso, nós chamamos esse função colocando o nome dela e abrindo e fechando parênteses, assim a função será executada no momento exato em que ela for lida.
+
+dizOi()COPIAR CÓDIGO
+Recarregando a página, ao ler o arquivo JavaScript o código já foi executado e ao clicar no robô o código é executado novamente. Uma função nos ajuda a repetir blocos de código. Essa é uma função nomeada, chamada de declaração de uma função. Contudo, essa não é a única forma de criar um função no JavaScript.
+
+Nessa lingagem, podemos criar uma função anônima, ou seja, uma função sem nome. Se ao clicar no Robotron, nós quisessemos que esse código fosse executado apenas uma vez, poderíamos usar uma função anônima.
+
+Para isso, declaramos ela em addEventLeitener(). Não colocamos nome nela, colocamos o parênteses, abrimos chaves e executamos o código.
+
+robotron.addEventLeitener("click", function() {
+
+})COPIAR CÓDIGO
+Em seguida colocamos outro console.log que será Cliquei no robô.
+
+robotron.addEventLeitener("click", function() {
+    console.log('Cliquei nno robô.')
+})COPIAR CÓDIGO
+Assim que executamos a página, a função dizOi é executada, ele leu a linha e executou e agora todas as vezes que clicarmos no robô ele executa a função anônima.
+
+A diferença da função anônima para a declarada é que a declara pode ser chamada mais vezes por ter um nome. Uma função anônima só pode ser executada uma única vez, quando um gatilho for disparado, nesse caso, quando o evento do click for disparado.
+
+As novas versões do JavaScript a partir do ES6 ainda tem uma forma diferente de declaramos uma função anônima. No lugar de usarmos function(), nós abrimos parênteses e colocamos uma seta formada por um sinal de igual e um maior =>.
+
+robotron.addEventLeitener("click", () => {
+    console.log('Cliquei nno robô.')
+})COPIAR CÓDIGO
+Com isso, economizamos na escrita de uma função, mas continuamos identificando-a claramente como um função anônima. Essa é uma arrow function (em tradução livre: função de setas) para declarar a função que não será nomeada novamente.
+
+Se recarregarmos a página, ele novamente executa dizOi e se clicamos no robô ele está interagindo com nossa página.
+
+Vimos a criação de uma função, a criação de uma função anônima e a criação de uma arrow function. Porém, uma das coisas mais importantes sobre uma função é podermos manipular os dados, mandar uma função dizer "oi" para qualquer pessoa. Em vez de dizermos "Bem-vindo ao Robotron 2000" podemos especificar o que será dito.
+
+Vamos dar uma olhada no console. Se nele executarmos a função dizOi ele só executa.
+
+dizOi()
+Oi
+Bem-vindo ao Robotron 2000COPIAR CÓDIGO
+Mas e se quisermos falar "Oi, Pedro" ou só "Pedro, bem-vindo ao Robotron 2000"? Precisaremos que essa função receba um parâmetro. O parâmetro vem dentro dos parênteses da criação de uma função. Aqui, o nome desse parâmetro será nome.
+
+function dizOi(nome) {
+    console.log('Oi')
+    console.log("Bem-vindo ao Robotron 2000")
+}COPIAR CÓDIGO
+Essa função vai receber um nome e vai imprimir esse nome.
+
+function dizOi(nome) {
+    console.log(nome)
+    console.log("Bem-vindo ao Robotron 2000")
+}COPIAR CÓDIGO
+E todas as vezes que chamarmos essa função é preciso dizer o que queremos imprimir, nesse caso Pedro.
+
+dizOi("Pedro")COPIAR CÓDIGO
+Se recarregarmos a página, veremos "Pedro. Bem -vindo ao Robotron 2000" aqui no nosso console.
+
+Pedro
+Bem-vindo ao Robotron 2000COPIAR CÓDIGO
+Vamos reparar no que aconteceu: nós passamos um texto para uma função, ela recebeu esse texto e fez algo com ele. Se quisemos somar algo, por exemplo "Oi + nome", seria possível.
+
+Oi Pedro
+Bem-vindo ao Robotron 2000COPIAR CÓDIGO
+Podemos passar, inclusive, outros valores como dizOi('Renata') ou dizOi('Paulo')
+
+dizOi("Renata")
+Oi Renata
+Bem-vindo ao Robotron 2000
+
+dizOi('Paulo')
+Oi Paulo
+Bem-vindo ao Robotron 2000COPIAR CÓDIGO
+Passamos um parâmetro para essa função e essa função a executou!
+
+Entendemos aqui como passar um texto como parâmetro, mas já existem parâmetros que são padrão da nossa página. Por exemplo, toda vez que um evento acontece, podemos manipular esse evento. E em uma arrow function, colocamos entre os parênteses o que usaremos, que é o evento. E colocamos no corpo da função do console.log o evento.
+
+robotron.addEventLeitener("click", (evento) => {
+    console.log(evento)
+})COPIAR CÓDIGO
+Recarregamos a página e toda vez que clicarmos, o console retorna tudo o que aconteceu, além de executar tudo que queremos.
+
+PointerEvent {isTruste: true, pointerId: 1, width: 1, height: 1, pressure: 0, _}COPIAR CÓDIGO
+Por que manipular o evento é importante? Porque agora podemos clicar em qualquer um dos itens para somar as peças em nosso robô! Montar um robô ainda mais incrível para começar a produção e combater a invasão alinigena.
+
+Contudo, para combater a invasão alienígena primeiro temos que manipular os eventos de click em nosso formulário de peças. E isso é assunto para o próximo vídeo.
+
+CONTINUAR LENDO
