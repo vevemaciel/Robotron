@@ -1,0 +1,43 @@
+Transcrição
+Temos nosso código dinâmico do montador de robôs! Agora temos os recursos para montadar toda as peças do Robotron 2000, porém, existe um problema muito grave, porque nosso CSS está acoplado ao nosso JavaScript. Por sorte, toda vez que usamos JavaScript para interagir com os elementos, podemos usar os Datta Attributes, os atributos de dados.
+
+Vamos começar apagando o id="braco" do nosso html e modicar o controle-ajuste negativo. Para fazer isso, vamos criar um data attribute, vamos colocar data-controle e dizer que o texto é -.
+
+<button class="controle-ajuste" data-controle="-">-<</button>COPIAR CÓDIGO
+Criamos uma propriedade! Assim como a classe já existe, criamos uma propriedade do tipo data com o nome "controle" e o valor negativo. Vamos fazer isso para todos os elementos do html e também para o controle positivo.
+
+Agora no JavaScript em vez de buscar a classe controle-ajuste vamos buscar pelo data attributes usando o colchetes [].
+
+const controle = document.querySelector("[controle-ajuste]")COPIAR CÓDIGO
+O código continua buscando o elementos! Porém, colocamos um valor no data-controle então não precisamos buscar o texto do elemento, o texto pode mudar a vontade porque estamos desaclopando o JavaScript do código HTML. Agora nós buscaremos o elemento data.
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+    })
+})COPIAR CÓDIGO
+Assim passamos para operacao o valor do controle, assim estruturamos melhor o código. Mas continuamos pecando porque estamos buscando pela classe do controle-contador. Então, vamos inventar um novo dataset.
+
+Vamos colocar data e inventar um novo nome, não quero mais controle agora eu quero contador.
+
+<div class="controle">
+    <button class="controle-ajuste" data-controle="-">-</button>
+    <input type="text" class="controle-contador" value="00" data-contador>
+    <button class="controle-ajute data-controle="+">+</button>
+</div>COPIAR CÓDIGO
+Reparem que não colocamos ele igual a nenhum valor, só colocamos o nome. Se não quisermos, não precisamos atribuir um valor a essa propriedade.
+
+Agora em no código java vez de buscarmos por controle-contador, buscaremos por data-contador.
+
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector("[data-contador]")
+
+    if(operacao === "-") {
+        peca.value = parseInd(peca.value) - 1
+    } else {
+        peca.value = parseInt(peca.value) + 1
+    }
+}COPIAR CÓDIGO
+Temos agora nosso contador de peças, nosso montador do Robotron extremamente dinâmico! Entretanto, não estamos fazendo o cálculo para saber se esse é um bom robô para a batalha, nós queremos atualizar força, energia, poder e velocidade. Para fazer isso é preciso manipular os dados da nossa calculadora de energia.
+
+Queremos que um elemento manipulado altere um grupo de elementos, mas isso é assunto para a próxima aula! Te vejo lá!

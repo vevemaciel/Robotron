@@ -1,0 +1,54 @@
+Transcrição
+Agora que vocês já configuraram sua página do seu jeito, vamos começar efetivamente com o JavaScript. Para começar com o JavaScript você não precisa de nada, não é preciso um servidor ou uma grande estrutura. Só com o navegador é possível usar o JavaScript e fazer as interações funcionarem.
+
+Aqui estou usando o Google Chrome. Para fazer isso, vamos abrir as ferramentas do desenvolvedor apertando o "F12". Em "Elementos" temos a nossa árvore do HTML com o head, o body e o main, tudo da forma como construímos.
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>_</head>
+    <body> = S0
+        <main>_</main>
+    </body>
+</html>COPIAR CÓDIGO
+Temos também uma aba que vamos usar muito. Quando estivermos programando em JavaScript, essa é aba "Console" será a principal. É nela qua vamos inserir os comandos de JavaScript especialmente para teste e também onde veremos os erros acontecendo.
+
+Antes de usar isso, voltaremos lá no nosso HTML. Nele temos nossa página inteira consrtuída e um input no fim do nosso HTML. Esse input tem um tipo (type) submit, um valor (value) de "Iniciar produção" e uma classe (class) producao.
+
+Vamos criar aqui um identificador (id) chamado producao para que possamos usar esse identificador no JavaScript.
+
+<input type="submit" value="Iniciar produção" class="producao" id="producao">COPIAR CÓDIGO
+É com esse elemento que vamos interagir agora. No console, vamos digitar document.getElementById(). Percebam que forma interessante de escrever aqui, escrevemos a primeira palavra get com a letra minúscula e cada palavra seguinte começamos com a letras maiúscula para fazer a divisão.
+
+Aqui estamso buscando o elemento pelo id e o id que criamos foi producao. Notem o que acontece quando damos o Enter.
+
+document.getElementById('producao')
+    <input type="submit" value="Iniciar produção" class="producao" id="producao">COPIAR CÓDIGO
+O JavaScript foi até o HTML e nos trouxe o elemento. Reparem que carregando o HTML ele é exatamente igual ao que vemos na página. Com a seta para cima, podemos voltar à último linha digitada. Podemos mudar qualquer elemento, podemos colocar no console value="Teste de JavaScript" e dar um Enter.
+
+document.getElementById('producao').value="Teste JavaScript"
+'Teste JavaScript'COPIAR CÓDIGO
+Com isso, o botão da nossa página passa a ter texto "Teste JavaScript" em vez de "Iniciar Produção" como era anteriormente. Nós buscamos um elemento pelo identificador e manipulamos esse elemento com o JavaScript.
+
+Ao longo de todo o seu aprendizado nós vamos usar o JavaScript para interagir com a nossa página, nosso HTML. Adicionar e retirar informações, manipular dados, evento e comportamentos, tudo isso com o JavaScript. É isso que veremos em toda essa formação e vamos começar pelo mais simples: interagir com um único elemento.
+
+Mexemos no id do elemento, buscamos um elemento pelo identificador, mas é muito raro adicionarmos identificadores nos elementos. Geralmente ao criarmo uma página usamos muitas classes. Como a classe cria um conteúdo reaproveitável no CSS, ela é muito mais usada. Por exemplo, a classe estatistica.
+
+Se formos ao console, e colocarmos document.getElements o console já sugere algumas opções, dentre elas getElementsByClassName(), buscando pela classe. Então, vamos buscar pela classe estatistica.
+
+document.getElementByClassName('estatistica')
+    HTMLCollection(4) [div.estatistica, div.estatistica, div.estatistica, div.estatistica]COPIAR CÓDIGO
+Repare que ele nos retornar uma coleção de elementos do HTML que tem quatro elementos. Ele nos retorna um array com quatro elementos. Ele me retorna esses dados e esses dados eu posso manipular
+
+É preciso gravarmos quando é um id ou uma classe para conseguirmos buscar esse elementos? É preciso gravar os comandos diferentes? Não obrigatoriamente. Se olharmos nosso css, podemos interagir com os elementos pelo nome da tag, com uma classe usando o ponto ., podemos navegar no css e buscar um elemento depois do outro, enfim, é possível fazer qualquer busca aqui. Se quisermos mudar um identificador, colocamos # e o identificador, podemos colocar o identificador e dentro dele uma tag, não tem problema nenhum. O css navega na página e busca esse elemento para colocar o estilo.
+
+O JavaScript faz o mesmo usando uma função uma pouco diferente, que é querySelector(). Com ela uma busca é feita no seletor que configurarmos.
+
+document.querySelector()COPIAR CÓDIGO
+Se realmente quisermos o id de produção, colocamos #producao. E como no css, ele nos retorna o input cujo id é producao.
+
+document.querySelector('#producao')
+    <input type="submit" value="Teste JavaScript" class="producao" id="producao">COPIAR CÓDIGO
+Então não é preciso grava getElementById, getElementByClassName ou getElementByTagName, que busca o elemento pela sua tag, nada disso é preciso. Usando o querySelector chegamos em todos os elementos baseados na mesma estrutura da nossa navegação pelo css.
+
+Vocês viram que usamos aqui a palavra "document" por várias vezes. O document é onde o JavaScript vai buscar o que estamos pedindo, ou seja, no nosso HTML. Mas para mergulhar um pouco mais no document e entendermos como funciona o DOM, convido vocês aos próximos vídeos.
+

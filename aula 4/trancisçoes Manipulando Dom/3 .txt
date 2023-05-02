@@ -1,0 +1,8 @@
+ 08
+O que aprendemos?
+PRÓXIMA ATIVIDADE
+
+Nessa aula:
+Definimos o que é Array e como manipular seus objetos;
+Como utilizar arrow functions;
+Como utilizar o método splice() para remover itens.

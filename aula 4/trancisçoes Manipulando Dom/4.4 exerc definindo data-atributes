@@ -1,0 +1,11 @@
+ 05
+Definindo data-attributes
+PRÓXIMA ATIVIDADE
+
+Tendo em vista o conteúdo abordado sobre os data-attributes utilizados por pessoas desenvolvedoras, desde sua estreia a partir do HTML5, assinale abaixo a alternativa que contenha informações corretas acerca dos data-attributes.
+
+Alternativa correta
+data-attributes permitem armazenar informações extras em elementos HTML. Sua utilização não é indicada para dados visíveis, pois tecnologias de acessibilidade podem não ler seus valores. Seus dados podem ser acessados e manipulados utilizando JavaScript, ou também para estilizar elementos HTML no CSS.
+
+
+Alternativa correta!

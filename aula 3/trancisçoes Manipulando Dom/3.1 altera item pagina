@@ -1,0 +1,65 @@
+Transcrição
+Até aqui já prendemos a buscar um elemento, adicionar um evento de click e executar uma função! Agora, temos tudo que precisamos para fazer o montador de peças do Robotron funcionar.
+
+Começaremos adicionando e subtraindo braços no Robotron. Primeiro, nosso html. Em nosso html temos aqui o Robotron, as estatístitcas e equipamentos. Temos o montador de casa uma das peças.
+
+Nesse momento, não quero interagir com todas as outras, quero interagir só com o controle das peças dos braços. Então, temos uma classe em um botão que é o controle-ajuste que é o negativo e tem uma classe que é o positivo. Ambos na classe controle-ajuste.
+
+<div class="controle">
+    <buttom class="controle-ajuste">_</buttom>
+    input type="text" class="controle-contador" value="00">
+    buttom class="controle-ajusta"></buttom>
+</div>COPIAR CÓDIGO
+Para facilitar nossa vida, vamos começar com um identificador para subtrair id="subtrair" no primeiro buttom class e um id="somar" no segundo buttom class. No input, colocaremos o id de braco.
+
+<buttom class="controle-ajuste" id="subtrair">_</buttom>
+input type="text" class="controle-contador" value="00" id="braco">
+buttom class="controle-ajusta" id="somar"></buttom>COPIAR CÓDIGO
+Pronto! Temos nossa estrutura do HTML. Agora, vamos para o javaScript. Temos o subtrair, o somar e o brcao então vamosa salvar essas três variáveis. Em "main.js" vamos esquecer a variável Robotron e vamos trocar por essas três por enquanto.
+
+const subtrair = document.querySelector("#subtrair")
+const somar = document.querySelector("#somar")
+const braco = document.querySelector("#braco")COPIAR CÓDIGO
+Já temos os três elementos. O que nós queremos? Toda vez que tiver um clique no subtrair, queremos que tire um. Sempre que tiver um clique no somar queremos que adicionae um. Vamos começar pelo somar.
+
+somar.addEventListener("click", (evento) => {
+
+})COPIAR CÓDIGO
+No somar toda vez que clicarmos queremos pegar o braco e no value dele incrimentar 1.
+
+somar.addEventListener("click", (evento) => {
+    braco.value += 1;
+})COPIAR CÓDIGO
+Vamos ver o que acontece agora ao recarregarmos nosso navegador. Ao apertarmos o botão "+" de "Braços" estamos somando "1", mas como um incremento.
+
+Existe um grande problema quando estamos manipulando os dados de um formulário que é o valor que vem para nós vem como uma string, um texto. Vamos fazer um experimento no console. Aqui, temos um 00 - porque é uma string - e toda vez que somamos 1, veja o resultado.
+
+"00" + 1 
+'001'COPIAR CÓDIGO
+E se pegarmos esse resultado e somarmos mais um?
+
+"001" + 1
+'0011'COPIAR CÓDIGO
+No JavaScript toda vez que temos uma soma entre uma string e um número, ele vai pegar a string que é o tipo mais forte e vai tranformar tudo em string. O resultado será uma string modificada, adicionada àquele número.
+
+Não queremos que esse número dinamicamente vire uma soma ou uma subtração. Para fazer isso, precisamos tranformar o valor de braco.value em um número. A operção parseInt() faz isso.
+
+somar.addEventListener("click", (evento) => {
+    parseInt(braco.value);
+})COPIAR CÓDIGO
+Vamos dar um console.log() nela para que o resultado fique visível.
+
+somar.addEventListener("click", (evento) => {
+    console.log(parseInt(braco.value));
+})COPIAR CÓDIGO
+Quando clicamos no botão "+" de "Braço" ele imprime um 0, que é um número. Agora braco.value pode receber o parseInt() do braco.value mais 1
+
+somar.addEventListener("click", (evento) => {
+    braco.value = parseInt(braco.value) + 1;
+})COPIAR CÓDIGO
+Agora quando carregamos o navegador, ele está somando! Podemos somar 10, 12 braços, quantos quisermos. Vamos, então, fazer o subtrair! E para subtrair, não tem nenhum detalhe extra, é só pegarmos o subtrair e diminuir 1. O mesmo código vai fazer a subtração e a adição.
+
+subtrair.addEventListener("click", (evento) => {
+    braco.value = parseInt(braco.value) - 1;
+})COPIAR CÓDIGO
+E agora conseguimos adicionar e remover braços do nosso robô! Com nossos elementos de mais e menos funcionando, precisamos apenas que todos os outros itens tenham o mesmo comportamento. Porém, não é saudável ficarmos criando códigos que serão repetidos diversas vezes. Por isso, vamos aprender a melhorar essa função a fim de deixarmos o código dinâmico. Este será o assunto do nosso próximo vídeo.

@@ -1,0 +1,11 @@
+Para saber mais: para que serve um Array?
+PRÓXIMA ATIVIDADE
+
+Nesta aula, tivemos uma pequena introdução sobre Arrays. Quando aplicamos o código abaixo, uma lista é criada com todos os elementos HTML que possuem a classe .controle-ajuste:
+
+const controle = document.querySelectorAll(".controle-ajuste")COPIAR CÓDIGO
+Esses elementos ficam guardados na const controle, e podem ser manipulados posteriormente ao avançarmos com o projeto Robotron 2000.
+
+Para um melhor entendimento do que são Arrays, e como manipulá-los, recomendo a leitura deste artigo escrito pelo instrutor Neilton Seguins:
+
+Para que serve um array?

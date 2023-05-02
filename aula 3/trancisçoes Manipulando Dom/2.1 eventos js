@@ -1,0 +1,82 @@
+Transcrição
+Agora que entendemos como o DOM funciona, vamos começar a interagir de verdade com nossa página usando o JavaScript! Para criarmos um código JavaScript que interaja com nossa página temos algumas opções e entre elas usar diretamente o console.
+
+Nele, vamos criar um alerta alert com a mensagem Oi e dar Enter.
+
+alert('Oi')COPIAR CÓDIGO
+Esse alerta aparece na nossa página com a mensagem "This page says oi" e temos que dar um "Ok" para ele sumir. Toda vez que estivermos interagindo com a página, é bom deixarmos o console aberto.
+
+O alerta esstá funcionando, mas não é exatamente isso que queremos. Nós queremos que esse código esteja no JavaScript porque se recarregarmos a nossa página, o alerta some. Quando essa cpodigo está no HTML, podemos recarregar a página e o código está salvo.
+
+Em nossa img class="robo" vamos adicinar a função onclick. O JavaScript trabalha com eventos, toda vez que algo acontece, ele se manifesta. Nesse caso queremos escutar o evento do click: toda vez que ele acontecer, nós fazemos algo. Portanto, no onclick damos um alert com oi.
+
+<img class="robo" src="img/robotron.png alt="Robotron" onclick="alert('oi')">COPIAR CÓDIGO
+Quando voltramos ao navegador, recarregarmos a página e clicarmos no robô, o alerta "oi" vai aparecer. O Robotron começou a se comunicar conosco, é a evolução das máquinas!
+
+Agora, queremos que esse código esteja repetível. O grande problema de fazermos um código inline é que todas as vezes que quisermos alterar o código JavaScript, precisaremos mexer no arquivo HTML. Isso não faz muito sentido porque se estamos mexendo com Java Script, deveríamos mexer exclusivamente no arquivo de JavaScript.
+
+Como fazemos para retirar essa manifestação do JavaScript do HTML? Vamos criar um arquivo JavaScript! Vamos criar uma pasata chamada "js" e dentro dela, criarmos um arquivo chamado "main.js", que ´o nome convecionalmente usado para arquivo padrão da JavaScript. Assim como usamos convencionalmente "style.css" para o arquivo de css.
+
+No "main.js" fazemos o alert('oi'). Mas se recaarregarmos a página logo em seguida não vai acontecer nada porque não chamamos esse arquivo em nosso HTML. Assim como no css, é preciso fazer um link entre esses dois arquivos. Porém, diferente do arquivo de css, esse link não é feito com a tag link. Para linkar um arquivo de script, usamos a tag script com o source src para descobrir a localizaão desse arquivo. Nesse caso, o arquivo está dentro da pasta js com o nome main.js.
+
+<script src="js/main.js"></script>COPIAR CÓDIGO
+Agora o alerta funciona em nosso navegador! Porém, ele travou o carregamento da página de modo que todo o restanto ficou em branco.
+
+Primeiro, como desenvolvedores, nós não usamos o alert para dar erros, nós usamos o console.log(). Com ele, além de não travar o carregamento da página, ele aparece direto em nosso console.
+
+O carregamento da página foi travado porque o carregamento do arquivo JavaScript faz isso! Toda vez que nosso navegador encontra um arquivo JavaScript na leitura do html, ele para tudo até ler aquele aqruivo inteiro e executá-lo antes de passar para a próxima linha.
+
+Para evitar problema, nós sempre colocamos o arquivo JavaScript na última linha possível, isso garantirá que nosso html seja lido inteiramente e carregado antes do js. Assim, quando ele estiver lendo o arquivo js, a página já vai estar dispnível para o usuário.
+
+Agora que temos um console funcionando, precisamos adicionar novamente o evento de um click seja mapeado. Para isso, usamos a função addEventListener. Essa função é um "escutador de eventos" e ela receberá um evento do tipo click.
+
+.addEventListener("click")COPIAR CÓDIGO
+Reparem, porém, que o VSCode já está apontando um erro porque sempre que um evento de click é adicionado, ele precisa ser adicionado a um elemento. No index.html, adicionaremos ele no robotron. Por isso, vamos adicionar esse id a robo.
+
+<img class="robo" src="img/robotron.png alt="Robotron" id="robotron">COPIAR CÓDIGO
+No js buscamos ele por meio de document.querySelector() buscando pelo id #robotron.
+
+document.querySelector("#robotron").addEventListener("click")COPIAR CÓDIGO
+Agora podemos ter um evento de click nesse elemento! Contudo, a função addEventListener() espera algo além do click, ela espera receber uma operação para executar. E podemos passar aqui um console.log dando oi.
+
+document.querySelector("#robotron").addEventListener("click", console.log('oi'))COPIAR CÓDIGO
+Entretanto, quando carregamos a página essa função já foi executada e o "oi" já está no console e quando clicamos, não acontece mais nada!
+
+Quando queremos que algo execute um pedaço de código, é preciso extrair isso para uma função. No JavaScript a função serve para armazenarmos pedaços de código.
+
+Por esta razão, vamos criar a função dizOi. A função tem essa grafia, ela começa com function seguido pelo nome da função que abre e fecha parênteses () e abre e fecha chaves {}.
+
+function dizOi() {
+
+} COPIAR CÓDIGO
+E dentro dela mandaremos executar o nosso console.log().
+
+function dizOi() {
+    console.log('oi')
+} COPIAR CÓDIGO
+Agora o que precisamos é que na hora de clicar, ele execute dizOi.
+
+document.querySelector("#robotron").addEventListener("click", dizOi)
+
+function dizOi() {
+    console.log('oi')
+} COPIAR CÓDIGO
+Recarregamos a página e ao clicar no botão, o console soma todas as vezes que a página diz "oi".
+
+Não temos apenas essa operação para salvar o código, ainda podemos salvar elementos, criar variáveis. Por exemplo, vamos criar uma constante const, que é um tipo de variável que não é alterada, chamada robotron. Essa constante receberá toda a busca que fizemos do nosso elemento.
+
+const robotron = document.querySelector("#robotron")COPIAR CÓDIGO
+Agora o addEventListeiner() ficou perdido, ele não está mais sendo executado em nada. Por essa razão, vamos colocá-lo para ser executado no robotron.
+
+const robotron = document.querySelector("#robotron")
+
+robotron.addEventListener,("click", dizOi)
+
+function dizOi() {
+    console.log('oi')
+}COPIAR CÓDIGO
+Vamos salvar esse código e recarregar nossa página no navegador. Ao clicar no robô, ele continua dizendo "oi".
+
+Nesse vídeo nós separamos o nosso código. Criamos um arquivo JavaScript para podermos criar códigos JavaScript. Entendemos como funciona o click do elemento por meio de um escutador de eventos e separamos código JavaScript quando armazenado para ser usado muitas vezes. Aprendemos que nesse caso ele precisa estar dentro de uma função e que os elementos buscados pelo JavaScript podem ficar dentro de uma variável.
+
+Não é simples, mas com a prática e a continuidade dos nossos exercícios, isso vai ficando muito claro para vocês. Vamos explorar um pouco mais das funções do JavaScript no próximo vídeo!
