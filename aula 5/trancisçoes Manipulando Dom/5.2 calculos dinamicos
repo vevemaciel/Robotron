@@ -1,0 +1,94 @@
+Transcrição
+Preparamos todo o terreno para que ao clicar em um elemento as estatisticas se alterem. Temos de forma muito clara os valores a serem alterados e já alteramos o html para comportar novos elementos do data attributes.
+
+Buscamos todos os elementos que tinham o controle para adicionar àquele evento. Agora, uqueremos adicionar também todos os elementos que tenham as estatísticas. Faremos isso usando o querySelectorAll() pegando o data-estatisticas. Para testaR, fazemos o console.log.
+
+cont estatisticas = document.querySelectorAll("[data-estatisticas]").
+console.log(estatisticas)COPIAR CÓDIGO
+No console temos uma lista de nós vazia, então fizemos algo errado. Nós usamos o plural em vez do singular! É extremamente importante na hora de programar tentar tirar da nossa cabeça e ver o código de verdade. As vezes imaginamos que está tudo certo e na hora da execução não encontramos os erros. É importante irmos passo a passo para avançar.
+
+cont estatistica = document.querySelectorAll("[data-estatistica]").
+console.log(estatistica)COPIAR CÓDIGO
+Agora sim temos as estatistica. Nosso próximo passo será atualizá-las com os dados das peças a cada click. No evento do click já chamamos a função manipulaDados() e a partir de agora chamaremos a função atualizaEstatisticas().
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.datasete.controle, evento.target.parentNode)
+        atualizaEstatistica()
+    })
+})COPIAR CÓDIGO
+Em seguida temos que declarar a função.
+
+function atualizaEstatistica() {
+
+}COPIAR CÓDIGO
+Para essa função, o que precisamos saber qual peça foi clicada e com ela manipular os dados. Portanto o parâmetro será peca e precisamos passar qual peça foi clicada.
+
+Usando a mesma lógica do evento.target.dataset.controle, no evento clicado temos o dataset.peca, então vamos passar o evento.target.dataset.peca.
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+        atualizaEstatistica(evento.target.dataset.controle)
+    })
+})COPIAR CÓDIGO
+E dentro da função, fazemos um consolelog(peca) para saber se a lógica está correta.
+
+function atualizaEstatistica() {
+    console.log(peca)
+
+}
+COPIAR CÓDIGO
+A clicar em "Braços", temos o retorno braco; ao clicar em "Blindagem" temos o retorno blindagem e assim por diante. A lógica, portanto, precisa ser buscar no objeto peca, que tem todos os valores, aquele item.
+
+Vimos que para navegar em um objeto podemos usar os colchetes [] que o retorno é o objeto daqueles dados.
+
+function atualizaEstatistica() {
+    console.log(peca[peca])
+
+}COPIAR CÓDIGO
+Então, temos ao buscar por um braço todos os valores daquele item, todos os dados daquele ponto específico do objeto. Entretanto, para além disso nós também queremos que a estatística seja atualizada e nós já buscamos esses elementos na nossa estatística.
+
+Como temos um array de elementos, para atualizar cada uma delas é preciso percorrer todas. Assim como fizemos para percorrer todo o array de controle, vamos fazer o mesmo processo com o forEach() em cima de estatisticas.
+
+function atualizaEstatistica() {
+    console.log(peca[peca])
+
+    estatistica.forEach(elemento)
+
+}COPIAR CÓDIGO
+Nossa intenção é atualizar cada uma das estatísticas, então o elemento em que estamos deve ser atualizado, ou seja, o seu texto deve ser atualizado com um novo valor. Vamos fazer um console.log() desse texto.
+
+function atualizaEstatistica() {
+    console.log(peca[peca])
+
+    estatistica.forEach( (elemento) =>
+    console.logo(elemento.textContent)
+    })
+}COPIAR CÓDIGO
+A cada vez que clicarmos em um item vamos percorrer todos os números da estatística imprimindo eles. Ao clicar no braço estamos percorrendo as estatísticas com cada um deles.
+
+Se estamos percorrendo e capturando o valor, podemos então atualizar esse valor com o conteúdo da peça. Reparem que esse console.lo(peca) nos traz um objeto, precisamos ir mais a fundo no objeto. Para achar a energia, por exemplo, precisamos descer mais um nível.
+
+Será necessário, portanto, descermos ao nível da estatística, do dataset dela, porque temos aqui um nome forca.
+
+Para que vocês possam entender muito claramente, vamos dar mais um console.log().
+
+console.log(dataset.estatistica)COPIAR CÓDIGO
+Temos o objeto peca na posição correta e ainda os texto da estatística porque buscamos esse elemento através do dataset e o número que desejamos atualizar. Temos tudo o que precisamos!
+
+Ao clicar em cada um desses elementos, queremos atualizar o textContent pra isso ele vai receber seu valor atual. Porém, esse valor vem em forma de texto precisamos de um número, então usaremos novamente o parseInt com o mesmo text.content.
+
+Além disso, vamos somar o elemento do valor da posição do objeto. Portanto, vamos somar do array peca na posição peca escolhida no item elemento.data.set.estatistica.
+
+funtion atualizaEstatistica(peca) {
+    estatistica.forEach( (elemento ) => {
+        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
+    })
+}COPIAR CÓDIGO
+A cada vez que somamos, ele atualiza os valor de força, poder, energia e velocidade. Para qualquer um das peças que escolheremos, as estatísticas são atualizadas imediatamente.
+
+Podemos até zerar as estatísticas porque agora vem o momento do combate em nossa invasão alienígena. Digamos que nosso centro de controle acabou de nos dizer "precisamos de um robô com força 300", você vai montar o seu robô com as combinações adequadas para chegar nessa demanda.
+
+Com isso, a primeira parte do projeto Robotron 2000 está concluída! Temos toda a engrenagem funcionando, será que conseguiremos colocar esse projeto para rodar e público na internet? Isso é assunto para o próximo vídeo!
+

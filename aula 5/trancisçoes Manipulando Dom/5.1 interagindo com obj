@@ -1,0 +1,95 @@
+Transcrição
+Nosso componente da engrenagem está funcionando perfeitamente e o atualizamos para usar o dataset e não ser dependente de alguma classe ou conteúdo que possa ser alterado. Agora, queremos que as estatísticas de nosso robô seja atualizada constantemente conforme formos montando Robotron. Ao adicionar um braço ou uma blindagem, precisamos saber se o poder, a velocidade e a força do robô está aumentando.
+
+Em nossa lista de links, abrindo o repositóro do Robotron vocês vão encontrar um arquivo de estatisticas "estatistica.js" onde tem a declaração de uma const. Vamos copiar e colar em nosso código "main.js" adicionando a variável pecas.
+
+const pecas = {
+    "bracos": {
+        "forca": 29,
+        "poder": 35,
+        "energia": -21,
+        "velocidade": -5
+    },
+
+    "blindagem": {
+        "forca": 41,
+        "poder": 20,
+        "energia": 0,
+        "velocidade": -20
+    },
+    "nucleos":{
+        "forca": 0,
+        "poder": 7,
+        "energia": 48,
+        "velocidade": -24
+    },
+    "pernas":{
+        "forca": 27,
+        "poder": 21,
+        "energia": -32,
+        "velocidade": 42
+    },
+    "foguetes":{
+        "forca": 0,
+        "poder": 28,
+        "energia": 0,
+        "velocidade": -2
+    }
+}COPIAR CÓDIGO
+Essa variável é um objeto que tem dentro dele cinco itens, braco, blindagem, nucleos, pernas e foguetes e dentro de cada um deles temos mais quatro declarações, um outro objeto, com mais quatro valores.
+
+Se voltarmos no navegador e recarregarmos, podemos usar no console a variável pecas, teremos os cinco itens, cada um com seus valores.
+
+pecas
+
+(bracos: {-}, blindagens: {-}, nucleos:{-}, pernas: {-}, foguetes{-})COPIAR CÓDIGO
+A estrutura de um obejto é muito interessante por ter a chave-valor que nos deixa navegar pelo objeto usando as referências. Com pecas.bracos conseguimos entrar dentro do item e ter todo o valor, que são mais quatro itens.
+
+pecas.bracos
+    {forca: 29, poder: 35, energia: -21, velocidade: -5}
+        "energia": -21,
+        "forca": 29,
+        "poder": 35,
+        "velocidade": -5
+            [[Prototype]]: ObjetcCOPIAR CÓDIGO
+Podemos, inclusive, navegar mais um nível e descobrir o valor númerico daquela estrutura.
+
+pecas.braco.energia
+-21COPIAR CÓDIGO
+Também podemos navegar em um objeto com a busca [] e por meio dela encontrar o valor.
+
+pecas["bracos"]
+    {forca: 29, poder: 35, energia: -21, velocidade: -5}COPIAR CÓDIGO
+Essas são formas interessantes de navegarmos no objeto porque elas nos deixam buscar dados de uma forma dinâmica e para buscar esses dados de uma forma dinâmica também vamos precisar alterar o hmtl.
+
+Nele temos o box das estatísticas com todos os valores e vamos adicionar em cada um desses textos um outros dataset que será o data-estatistica. O primeiro data-estatistica é forca, depois é poder, energia e velocidade, repectivamente.
+
+<section class="box estatistica">
+    <div class="estatistica">
+        <p class="estatistica-titulo">Força</p>
+        <div class="estatistica-valor"
+            <p class="estatistica-numero" data-estatistica="forca">768</p>
+        </div>
+    </div>
+    <div class="estatistica"
+        <p class="estatistica-titulo">Poder</p>
+        <div class="estatistica-valor"
+            <p class="estatistica-numero" data-estatistica="poder">630</p>
+        </div>
+    </div>
+    <div class="estatistica"
+        <p class="estatistica-titulo">Energia</p>
+        <div class="estatistica-valor"
+            <p class="estatistica-numero" data-estatistica="energia">286</p>
+        </div>
+    </div>
+    <div class="estatistica"
+        <p class="estatistica-titulo">Velocidade</p>
+        <div class="estatistica-valor"
+            <p class="estatistica-numero" data-estatistica="velocidade">597</p>
+        </div>
+    </div>
+<section>COPIAR CÓDIGO
+Com o data-estatistica já podemos buscar esse elemento e alterar seu valor. Mas, além disso, precisamos passar para frente o que estamos mexendo. Aqui, não temos o conteúdo de braco sendo enviado para nenhum lugar, só temos o mais e menos. Portanto, em nosso buttom vamos criar mais um data attribute data-peca. O primeiro data-peca será igual a braco, o segundo igual a blindagem, depois nucleos, pernas e foguete, respectivamente.
+
+Agora temos toda a estrutura que precisamos para fazer a lógica dessa nova funcionalidade, temos as peças, os valores. Agora precisamos reestruturar o nosso código para que ao clicarmos em um desses itens, chamarmos alguma nova função para atualizar as estatísticas. Mas isso é assunto para o próximo vídeo, te vejo lá!

@@ -1,0 +1,76 @@
+Transcrição
+Temos uma função que manipula os dados a partir de um parâmetro e temos uma variável com todos os nossos controles. O que precisamos agora é adicionar em cada controle um escutador de eventos.
+
+Existem algumas operações muito legais para manipularmos arrayss, por exemplo, podemos fazer os loops de interação com o for ou podemos usar o while. Mas o array tem uma operação própria chamada forEach(). Com essa função do Array, conseguimos fazer esse loop sem inventar muito.
+
+O forEach() é muito simples de ser utilizado, toda vez ele é usado temos um elemento e um índice. O elemento é aquilo que foi clicado e o índice é o indíce do array. Então controle.forEach() faz algo.
+
+Dentro dessa operação, vamos criar uma função de seta que vai executar algum código. Nesse momento queremos descobrir qual elemento foi clicado, então em foEach() temos a opção de pegar um elemento e vamos dar um console.log() no elemento para entender se está funcionando.
+
+controle.forEach( (elemento) => { 
+    console.log(elemento)
+)}COPIAR CÓDIGO
+No console, ele retorna todos os dez elementos que queríamos. Precisamos agora adicionar um escutador de evento como aquele da função addEventListener() novamente recebendo o click fazendo algo () =>. E damos um console.log() de funcionou.
+
+controle.forEach( (elemento) => { 
+    elemento.addEventListener('click', () => {
+        console.log("funcionou")
+    )} 
+)}COPIAR CÓDIGO
+Recarregamos o navegador e funcionou! Em "Braços" clicamos em subtrair e em somar e funcionou, na "Blindagem" também, subtrair funcionou e somar funcionou. Muito bom!
+
+Agora, em vez de dizer apenas que funcionou ele nos diga o que aconteceu, qual foi o evento. Já vimos que todo evento de click tem o prâmetro do evento com tudp que aconteceu ali, então vamos dar um console.log() no evento.
+
+controle.forEach( (elemento) => { 
+    elemento.addEventListener('click', () => {
+        console.log("evento")
+    )} 
+)}COPIAR CÓDIGO
+Agora, quando clicamos em algum botão, ele nos traz o evento do click! Tem algo aqui do evento, que é o target, ou seja, onde o click aconteceu,. Com evento.target ele vai nos trazer isso.
+
+controle.forEach( (elemento) => { 
+    elemento.addEventListener('click', () => {
+        console.log(evento.target)
+    )} 
+)}COPIAR CÓDIGO
+Agora quando clicamos ele traz o botão e quando somo, ele subtrai. A blindagem, o núcleo, as pernas e os foguetes ainda não estão fazendo isso pelo simples motivo que a função manipulaDados ainda não está entendendo isso tudo.
+
+Precisamos passar o somar de o botão for "+" e subtrair se o botão for "-". Temos o evento.target e se olharmos no hmtl, o conteúdo desse buttom é um - e o conteúdo do outro é +.
+
+<div class="controle">
+    <buttom class="controle-ajuste" id="subtrair">-</buttom>
+    <input type="text" class="controle-contador" value="" id="braco">
+    <buttom class="controle-ajuste" id="somar">+</buttom>
+</div>COPIAR CÓDIGO
+Não precisamos ficar entendendo se é somar ou subtrair, podemos simplesmente pegar aquele conteúdo .textContent. Toda vez que é um input é um value e toda vez que é um texto, é um textContent.
+
+controle.forEach( (elemento) => { 
+    elemento.addEventListener('click', () => {
+        console.log("evento.target.textContent")
+    )} 
+)}COPIAR CÓDIGO
+Agora quando clicamos no mais, vem o mais + e quando clicamos no menos vem o menos -.
+
+Nosso código está muito bom, porém estamos dando console.log()nisso! Queremos chamar a função manipulaDados, mas essa função espera um texto chamado subtrair ou um texto chamado somar e o resultado é + ou -.
+
+Então, vamos rafatorar nossa função e melhorar a lógica do nosso código para em vez de subtrair ele esperar - e em vez de somar esperar +.
+
+somar.addEventListener("click", () => (manipulaDados("somar")))
+
+subtrair.addEventListener("click", () => (manipulaDados("subtrair")))
+
+
+function manipulaDados(operacao) {
+    if(operacao === "subtrair") {
+        braco.value = parseInt(braco.value) - 1
+    } else {
+        braco.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Quando somamos agora, ele está somando de dois em dois! Isso porque continuamos com somar.addEventListener e subtrair.addEventListener, não faz sentido eles estarem portanto vamos removê-los.
+
+Agora, em Braços tanto o botão de somar quanto de subtrair funcionam, porém, os botões de "Blindagem" também estão somando e subtraindo em "Braços".
+
+Reparem que em nossa função manipulaDados estamos interagindo somente com braco.value! Precisamos que esse dado também seja dinâmico a partir do elemento que nós clicarmos.
+
+Vamos refatorar ainda mais esse código e deixá-lo melhor, mas isso é assunto para a próxima aula!

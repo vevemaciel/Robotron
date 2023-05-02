@@ -1,0 +1,12 @@
+Consolidando o seu conhecimento
+PRÓXIMA ATIVIDADE
+
+Chegou a hora de praticar! No desafio desta aula, temos uma lista de cores que serão utilizadas para pintar uma loja, porém o cliente informou que não deseja mais pintar com a cor "vermelha". Retire esta cor da lista utilizando um método do JavaScript. Utilize a lista abaixo como base:
+
+var lista = ["Laranja", "Vermelho", "Branco", "Amarelo", "Rosa"]; COPIAR CÓDIGO
+Como fazer:
+
+Abra o inspecionar em qualquer página do navegador;
+Na aba “console” do inspecionar passe a lista de cores;
+Aplique o método para remover a cor “Vermelho”;
+Utilize console.log(lista); ao final para conferir o resultado.

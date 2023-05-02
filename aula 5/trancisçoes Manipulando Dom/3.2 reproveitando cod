@@ -1,0 +1,64 @@
+Transcrição
+Criamos um código capaz de adicionar e subtrair os itens do nosso montador do Robotron. A validação de braço negativos, afinal um robô não pode ir com braços negativos para batalha, nós veremos no Módulo 2. Por enquanto, esse não é o assunto que queremos tratar.
+
+O que vamos ver agora é como reaproveitamos esse código com uma função.
+
+const subtrair = document.querySelector("#subtrair")
+const somar = document.querySelector("#somar")
+const braco = document.querySelector("#braco")
+
+somar.addEventListener("click", (evento) => {
+    braco.value = parseInt(braco.value) + 1;
+})
+
+subtrair.addEventListener("click", (evento) => {
+    braco.value = parseInt(braco.value) - 1;
+})COPIAR CÓDIGO
+Vamos entender agora na prática para que servem as funções. Temos esse código parseInt(braco.value) que se repete e nós não precisamos jogar essa validação no elemento. Podemos terceirizar essa validação para um outro lugar.
+
+Criaremos uma funcão chamada manipulaDados() que recebe um parâmetro que será a operacao.
+
+function manipulaDados(operacao)COPIAR CÓDIGO
+Se essa operação for, por exemplo, subtrair, então queremos tirar um item do nosso contador de braco.value senão queremos somar.
+
+function manipulaDados(operacao) {
+    if(operacao === "subtrair") {
+        braco.value = parseInt(braco.value) - 1
+    } else {
+        braco.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Agora trouxemos toda a lógica de manipulação dos dados para um único lugar e só precisamos mandar o dados para aquele lugar que toda a operação será realizada. Assim, separamos as responsabilidades. A única responsabilidade do evento do click é a avisar para o maniúlaDados() que aconteceu um clique. E a função o manipulaDados() é interagir e realmente mudar o valor.
+
+Em addEventListener() não precisamos do parâmetro evento, precisamos apenas chamar a função manipulaDados() passando o que é esperado, somar e subtrair, respectivamente.
+
+somar.addEventListener("click", () => (manipulaDados("somar"))
+
+subtrair.addEventListener("click", () => (manipulaDados("subtrair"))COPIAR CÓDIGO
+Salvando isso e recarregando nossa página, conseguimos somar e subtrair os elementos! Vamos mergulhar um pouco mais nessa lógica porque queremos somar e subtrair todos os elementos (braços, blindagem, núcleos, pernas e foguetes). E no html nós só adicionamos um identificados. Será que podemos fazer isso usando a classe controle-ajuste?
+
+Para buscar esse elemento vamos chamar isso de controle que receberá o document.querySelector() com a classe .controle-ajuste.
+
+const controle = document.querySelector(".controle-ajuste")COPIAR CÓDIGO
+Em seguida damos um console.log(controle) para vermos o que esse querySelector() conseguiu capturar.
+
+<buttom class="controle-ajuste id="subtrair">-</buttom>COPIAR CÓDIGO
+Ele pegou um botão que tem o id subtrair. Notem que o querySelector() buscou apenas um elemento, mas nós queremos buscar todos. Para isso, usamos a operação querySelectorAll().
+
+const controle = document.querySelectorAll(".controle-ajuste")COPIAR CÓDIGO
+Todos os elementos que tiverem essa classe, agora serão buscados.
+
+NodeList(10) {
+buttom#subtrair.controle-ajuste,
+buttom#soma.controle-ajuste,
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajuste
+buttom.controle-ajusteCOPIAR CÓDIGO
+Temos aqui uma lista de nós, ou seja, um array com todos esses elementos! Ou seja, todos esses elementos agora estão manipuláveis nessa função do controle.
+
+Como fazemos para criar um evento para todos esses elementos sem que precisemos criar dez código diferentes? Vamos manipular esse array para que ele faça isso pra mim. Mas isso é assunto para o próximo vídeo.

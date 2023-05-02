@@ -1,0 +1,23 @@
+Transcrição
+Temos nossa engrenagem e as estatisticas funcionando e podemos usar o Robotron 2000 para iniciar a produção e ajudar a defender contra o ataque alienígena, precisamos colocar esse site no ar para que outras pessoas possam montar seus robôs e nos ajudar no combate.
+
+Vamos usar o Vercel para o deploy desse site. O deploy é a publicação. Ao abrir o site, aparecerá uma tela preta com "Develop. Previw. Ship" em letras grande, a primeira palavra está em azul e as duas outras em branco. Na parte inferior bem centralizados então os botões "Start Deploying" e "Get a Demo", selecionaremos "Start Deploying".
+
+Em seguida, aparecerá na tela uma lista mais ao lado direito com as opções de botões "Coninue with GitHub", "Coninue with GitLab" e "Continue with Bitbucket " , selecionaremos a opção do GitHub.
+
+Uma outra tela aparecerá pedindo a autorização para se conectar ao GitHub, devemos escolher a opção "Authorize Vercel" que está no canto inferior direito em verde. Ao carregar, o Vercel já terá acesso aos nossos repositórios.
+
+Como eu tenho várias contas no GitHub, já que faço muito projetos na Alura e da minha empresa, eu preciso clicar no meu nome para ele pegar todos os repositórios da minha conta.
+
+Vou clicar para importar o projeto Robotron 2000 e dar o nome "Robotron 2000". Ele nos perguntará o tipo de framewokr que queremos, aqui eu não vou mudar nada e vou dizer que esse é o arquivo padrão. Para finaliza, clicamos no botão "Deploy".
+
+Pronto! Acabamos de fazer o deploy de um novo projeto. Se voltarmos ao Dashboard, conseguimos ver todos os projetos que estão publicados. Ele, inclusive, nos dá na primeira linha uma URL, um endereço que ao clicar vamos visitar essa publicação.
+
+Porém, tem mais um detalhe: por que publicamos um site desses? Para poder adicioná-lo ao nosso portfólio! Vamos fazer isso?
+
+Agora que nossa site já está no ar e todo mundo pode montar o robô, vamos pegar a URL que ele gerou e publicá-la no LinkedIn. Essa é a melhor forma de documentar o seu portfólio, de mostrar para o mundo como você está crescendo, como você está evoluindo e qual tipo de projeto você já fez.
+
+Aqui, tirei um print do Robotron 2000 desses projeto para fazer uma publicação ainda mais interessante. Vou Selecionar o print no LinkedIn e adicionar o texto "Acabei de publicar o projeto Robotron - 2000, um projeto muito maneiro para aprender e praticar o JavaScript. Meu projeto já está no ar e você também pode montar o seu robô".
+
+Se você quiser me marcar, eu sou @pedromarins. Use a hashtag #AprendiNaAlura e coloque o link para o seu projeto, assim as pessoas podem ver quanto você evoluiu e também poderão montar o seu robô.
+

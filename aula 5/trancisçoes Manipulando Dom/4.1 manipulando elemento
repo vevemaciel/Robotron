@@ -1,0 +1,97 @@
+Transcrição
+'Temos nosso componente da calculadora funcionando de uma forma dinâmica. Agora, é possível adicionar e subtrair todos os itens do Robotroon 2000. Porém, quando adicionamos o Braço, ele funciona normalmente, mas quando adicionamos uma Blindagem, um Núcleo, Perno ou Foguete, ele está também adicionando um Braço!
+
+Em nosso código, nós buscamos somente o elemento com identificador do braço e é só ele que estamos mexendo. Já deixamos o nosso controlador dinâmico buscando os elementos que estão sendo clicados, mas isso não está refletido no elemento em que o código é aplicado, em que a soma e a subtração são aplicadas.
+
+Em nosso html temos o botão de controle de ajuste negativo e positivo.
+
+<div class="controle">
+    <buttom class="controle-ajuste">-</buttom>
+    <input type="text" class="controle-contador" value="00" id="braco">
+    <buttom class="controle-ajuste">+</buttom>COPIAR CÓDIGO
+Aqui eu já retirei os identificadores, então podemos tirar nosso somar e subtrair do nosso código java.
+
+const braco = document.querySelector("#braco")
+
+cont controle = document.querySelectorAll(".controle-ajuste")
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.textContent)
+    })
+})
+
+function manipulaDados(operacao) {
+    if(operacao === "-") {
+        braco.value = parseInt(braco.value) - 1
+    } else { 
+        braco.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Em nosso html, o buttom e o input são irmãos, mas não sabemos qual vem antes e qual vem depois. Em compensação, sabemos que todos eles são filhos do controle. Na árvore do nosso html, todos eles são filhos da classe controle, dessa div.
+
+Isso é muito bom porque no JavaScript a navegação na árvore do html, interagir com o DOM é fácil, nós já vimos. Dentro de uma operação e de um evento conseguimos mapear o que aconteceu. Se clicamos no menos, já vimos o texto desse elemnto, mas também podemos ver quem é o pai dele. A partir do momento que conhecemos o pai podemos interagir com o elemento filho.
+
+Vamos fazer isso agora para vocÊs verem funcionando. Daremos um console.log() em evento.target, ou seja, no elemento que foi clicado. Porém, como queremos navegar pela árvore do html, vamos usar o parentNode porque queremos ir no pai, que é o parent.
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.textContent)
+        console.log(evento.target.parentNode)
+    })
+})
+COPIAR CÓDIGO
+Agora quando clicamos, vamos direto na div de controle certa! Como nós conhecemos a div controle, só precidamos alterar a peça. Vamos trazer essa busca do braço aqui para dentro. Mas em vez de braco queremos procurar a peca, vamos deixar esse código mais genérico. Com "Ctrl + D" conseguimos trocar todas os itens de uma só vez.
+
+function manipulaDados(operacao) {
+    const peca = document.querySelector("#braco")
+    if(operacao === "-") {
+        peca.value = parseInt(braco.value) - 1
+    } else { 
+        peca.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Temos esse elemento dinâmico, portanto, não vamos mais buscar por braco e sim por controle-contador.
+
+function manipulaDados(operacao) {
+    const peca = document.querySelector("#controle-contador")
+    if(operacao === "-") {
+        peca.value = parseInt(braco.value) - 1
+    } else { 
+        peca.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Porém, não queremos buscar isos no documento inteiro senão vamos encontrar cinco controle-contador, queremos buscar o controle-contador só do controle, do elemento que foi clicado. Para isso, é preciso passar o elemento como parâmetro para função manipulaDados().
+
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.textContent, evento.target.parentNode)
+    })
+})COPIAR CÓDIGO
+Agora estamos passando dois blocos de informação para manipulaDados(), um é o operacao e o segundo vamos chamar de controle, que é o pai do elemento clicado.
+
+function manipulaDados(operacao, controle) {
+    const peca = document.querySelector("#controle-contador")
+    if(operacao === "-") {
+        peca.value = parseInt(braco.value) - 1
+    } else { 
+        peca.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+O querySelector() não será mais no documento inteiro, será apenas em controle. Toda vez que clicarmos no controle, vamos buscar o controle-contador e adicionar ou subtrair um item.
+
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector("#controle-contador")
+    if(operacao === "-") {
+        peca.value = parseInt(braco.value) - 1
+    } else { 
+        peca.value = parseInt(braco.value) + 1
+    }
+}COPIAR CÓDIGO
+Recarregando o navegador podemos ver que a soma e a subtração funcionam em todos os itens do montador do Robotron! Agora que já podemos ter o robô pronto para batalha, precisamos resolver um detalhe muito importante porque esse código não está muito dinâmico e robusto!
+
+Imaginem que por uma decisão de design em vez de - escrevêssemos menos e em vez de + escrevêssemos mais: toda nossa lógica que está procurando pelo sinal de menos ou pelo sinal de mais vai quebrar! Isso não acontece apenas com texto, também aconteceria se mudássemos o nome da classe ou adicionássemos uma outra classe.
+
+Temos uma ferramenta chamada *Data Attributes para resolver isso, mas esse é o assunto do próximo vídeo!
+
+CONTINUAR LENDO

@@ -1,0 +1,18 @@
+ 06
+Consultando uma lista
+PRÓXIMA ATIVIDADE
+
+Suponhamos que temos um array chamado listaItens e precisamos conferir a quantidade de objetos que ele possui.
+
+<ul class="lista">
+  <div class="item">Laranja</div>
+  <div class="item">Vermelho</div>
+  <div class="item">Branco</div>
+  <div class="item">Laranja</div>
+  <div class="item">Preto</div>
+</ul>COPIAR CÓDIGO
+Das opções abaixo, qual retorna corretamente esta informação?
+
+console.log(listaItens.length)
+
+Alternativa correta! A forma mais apropriada de consultar a quantidade de itens em um array é utilizando a propriedade length.
